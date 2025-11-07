@@ -1,0 +1,25 @@
+//
+// Created by Right on 2025/11/3.
+//
+
+#include "colorswitch.h"
+
+#include "beeper.h"
+#include "stm32f1xx_hal.h"
+
+extern enum Color_enum color;
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN) {
+    if (GPIO_PIN == GPIO_PIN_0) {
+        GPIO_PinState state = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
+        switch (state) {
+            case GPIO_PIN_RESET:
+                while (1) {
+                    beeperOn();
+                }
+            case GPIO_PIN_SET:
+                beeperOn();
+        }
+    }
+}
+
