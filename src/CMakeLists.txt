@@ -49,6 +49,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
         ./Src/battery.c
         ./Src/colorswitch.c
         ./Src/RGB.c
+        ./Src/collisionDetection.c
 
 )
 
@@ -59,6 +60,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
         ./Inc/beeper.h
         ./Inc/colorswitch.h
         ./Inc/RGB.h
+        ./Inc/collisionDetection.h
 )
 
 # Add project symbols (macros)

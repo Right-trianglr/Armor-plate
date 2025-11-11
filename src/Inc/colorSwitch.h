@@ -12,3 +12,5 @@ enum Color_enum{
     blue = 0,
     red = 1,
 };
+
+void handleColorSwitch();

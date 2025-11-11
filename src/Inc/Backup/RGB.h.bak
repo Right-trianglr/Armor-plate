@@ -3,9 +3,8 @@
 
 #include "main.h"
 
-/*?????????CCR????*/
-#define CODE_1 (58) // 1????????58
-#define CODE_0 (25) // 0????????25
+#define CODE_1 (58)
+#define CODE_0 (25)
 
 typedef struct
 {
@@ -14,19 +13,22 @@ typedef struct
 	uint8_t B;
 } RGB_Color_TypeDef;
 
+/*一些常见颜色*/
+extern const RGB_Color_TypeDef RED;
+extern const RGB_Color_TypeDef BLUE;
+extern const RGB_Color_TypeDef GREEN;
+extern const RGB_Color_TypeDef BLACK;
+extern const RGB_Color_TypeDef WHITE;
+
+
 #define Pixel_NUM 8
 
-extern int target_time_flag;
-extern int Arrow_flag;
+void RGB_SetSingleColor(uint16_t LedId, RGB_Color_TypeDef Color);
 
-void RGB_SetColor(uint16_t LedId, RGB_Color_TypeDef Color);
 void Reset_Load(void);
-void RGB_SendArray_PA0(void);
 
-void RGB_RED2(uint16_t Pixel_Len);
+void RGB_SetColors(uint16_t Pixel_Len, RGB_Color_TypeDef Color);
 
-void RGB_Black2(uint16_t Pixel_Len);
-
-extern RGB_Color_TypeDef COLOR1;
+void RGB_SendArray(TIM_HandleTypeDef *htimx, const uint32_t channel);
 
 #endif

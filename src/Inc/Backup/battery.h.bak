@@ -7,3 +7,5 @@
  */
 
 void startBatteryMonitor(void);
+
+void handleBatteryMonitor(void);
