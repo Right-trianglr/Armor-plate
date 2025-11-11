@@ -1,13 +1,6 @@
 #include "RGB.h"
 #include "main.h"
 
-/*一些常见颜色*/
-const RGB_Color_TypeDef RED = {255, 0, 0};
-const RGB_Color_TypeDef BLUE = {0, 0, 255};
-const RGB_Color_TypeDef GREEN = {0, 255, 0};
-const RGB_Color_TypeDef BLACK = {0, 0, 0};
-const RGB_Color_TypeDef WHITE = {255, 255, 255};
-
 
 /*二维数组存放最终PWM输出数组，每一行24个
 数据代表一个LED，最后一行24个0代表RESET码*/
@@ -23,7 +16,7 @@ uint32_t Pixel_Buf[Pixel_NUM + 1][24];
  * @param LedId LED序号（从0开始，最大为Pixel_NUM）
  * @param Color RGB颜色结构体（包含R、G、B分量）
  */
-void RGB_SetColor(uint16_t LedId, RGB_Color_TypeDef Color)
+void RGB_SetSingleColor(uint16_t LedId, RGB_Color_TypeDef Color)
 {
 	uint16_t i;
 	if (LedId > Pixel_NUM)
@@ -63,17 +56,17 @@ void RGB_SendArray(TIM_HandleTypeDef *htimx, const uint32_t channel)
 }
 
 /**
- * @brief 红色灯珠设置函数
+ * @brief 批量灯珠设置函数
  * @param Pixel_Len 需要点亮的LED数量
- *
+ * @param Color 设置的颜色
  */
-void RGB_SetRED(uint16_t Pixel_Len)
+void RGB_SetColors(uint16_t Pixel_Len, RGB_Color_TypeDef Color)
 {
 	uint16_t i;
 
 	for (i = 0; i < Pixel_Len; i++) // 给对应个数LED写入红色
 	{
-		RGB_SetColor(i, RED);
+		RGB_SetColor(i, Color);
 	}
 
 	Reset_Load();

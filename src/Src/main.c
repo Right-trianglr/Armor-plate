@@ -1,6 +1,7 @@
 /* USER CODE BEGIN Header */
 #include "battery.h"
 #include "RGB.h"
+#include "colorswitch.h"
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -28,14 +29,13 @@
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
 ADC_HandleTypeDef hadc2;
-
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 DMA_HandleTypeDef hdma_tim2_ch1;
 DMA_HandleTypeDef hdma_tim2_ch2_ch4;
 
 /* USER CODE BEGIN PV */
-
+extern enum Color_enum ledcolor;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,7 +97,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
+    if (ledcolor == red) {
+      RGB_SetColor(8,RED);
+      RGB_SendArray(&htim2, TIM_CHANNEL_1);
+      RGB_SendArray(&htim2, TIM_CHANNEL_2);
+    }
+    if (ledcolor == blue) {
+      RGB_SetColor(8,BLUE);
+      RGB_SendArray(&htim2, TIM_CHANNEL_1);
+      RGB_SendArray(&htim2, TIM_CHANNEL_2);
+    }
   }
   /* USER CODE END WHILE */
 }

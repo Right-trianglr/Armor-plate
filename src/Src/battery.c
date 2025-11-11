@@ -47,7 +47,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 
         // battery voltage compare
         // there is no battery when vbat <= 1v
-        if ( (Battery_voltage > 1) && (Battery_voltage < 3.5f || Battery_voltage > 4.3f) ) {
+        if ( (Battery_voltage > 1) && (Battery_voltage < 3.5f || Battery_voltage > 4.4f) ) {
             beeperOn();
         }
         else {

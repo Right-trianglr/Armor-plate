@@ -8,7 +8,7 @@
  * also use macro as alternative
  */
 
-extern enum Color_enum{
+enum Color_enum{
     blue = 0,
     red = 1,
 };
