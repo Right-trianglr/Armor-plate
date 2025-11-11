@@ -13,6 +13,7 @@ const RGB_Color_TypeDef WHITE = {255, 255, 255};
 数据代表一个LED，最后一行24个0代表RESET码*/
 uint32_t Pixel_Buf[Pixel_NUM + 1][24];
 
+
 /**
  * @brief 设置单个RGB LED的颜色
  *
@@ -51,7 +52,6 @@ void Reset_Load(void)
 	}
 }
 
-
 /**
  * @brief 通过TIM2通道1发送WS2812灯珠数据
  * 使用DMA方式，将Pixel_Buf数组中的数据输出
@@ -63,13 +63,11 @@ void RGB_SendArray(TIM_HandleTypeDef *htimx, const uint32_t channel)
 }
 
 /**
- * @brief 红色灯珠显示函数2（TIM2通道1，PA0，靶环专用）
- *
- * 用TIM2通道1发送数据 (PA0)
+ * @brief 红色灯珠设置函数
  * @param Pixel_Len 需要点亮的LED数量
  *
  */
-void RGB_RED2(uint16_t Pixel_Len)
+void RGB_SetRED(uint16_t Pixel_Len)
 {
 	uint16_t i;
 
@@ -79,41 +77,4 @@ void RGB_RED2(uint16_t Pixel_Len)
 	}
 
 	Reset_Load();
-	//DWT_Delay(5);
-	extern TIM_HandleTypeDef htim2;
-	RGB_SendArray(&htim2,TIM_CHANNEL_1);
-}
-
-/**
- * @brief 全灭灯珠显示函数2（TIM2通道1，PA0，靶环专用）
- *
- * 用TIM2通道1发送数据 (PA0)
- *
- * @param Pixel_Len 需要熄灭的LED数量
- */
-void RGB_Black2(uint16_t Pixel_Len)
-{
-	uint16_t i;
-
-	for (i = 0; i < Pixel_Len; i++) // 给对应个数LED写入黑色（熄灭）
-	{
-		RGB_SetColor(i, BLACK);
-	}
-
-	Reset_Load();
-	RGB_SendArray_PA0();
-}
-
-/**
- * @brief 全灭函数
- */
-void RGB_all_black(void)
-{
-	uint16_t i;
-	for (i = 0; i < 8; i++) // 全灭
-	{
-		RGB_SetColor(i, BLACK);
-	}
-	Reset_Load();
-	RGB_SendArray_PA0();
 }

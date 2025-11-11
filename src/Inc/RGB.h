@@ -15,17 +15,10 @@ typedef struct
 
 #define Pixel_NUM 8
 
-extern int target_time_flag;
-extern int Arrow_flag;
-
 void RGB_SetColor(uint16_t LedId, RGB_Color_TypeDef Color);
+
 void Reset_Load(void);
-void RGB_SendArray_PA0(void);
 
-void RGB_RED2(uint16_t Pixel_Len);
-
-void RGB_Black2(uint16_t Pixel_Len);
-
-extern RGB_Color_TypeDef COLOR1;
+void RGB_SetRED(uint16_t Pixel_Len);
 
 #endif

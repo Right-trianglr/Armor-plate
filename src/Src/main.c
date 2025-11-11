@@ -90,9 +90,7 @@ int main(void)
   MX_TIM3_Init();
   MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
-
   startBatteryMonitor(); //启用电池电压监测
-  RGB_RED2(8);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,13 +98,12 @@ int main(void)
   while (1)
   {
 
-
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
   }
-  /* USER CODE END 3 */
+  /* USER CODE END WHILE */
 }
+
+/* USER CODE BEGIN 3 */
+/* USER CODE END 3 */
 
 /**
   * @brief System Clock Configuration
