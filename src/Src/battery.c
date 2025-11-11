@@ -8,12 +8,21 @@ extern TIM_HandleTypeDef htim3;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 
+/**
+ * @brief 启动电池电压监测定时器
+ * 定时器定时触发中断，利用adc监测电压
+ */
 void startBatteryMonitor(void) {
     HAL_ADCEx_Calibration_Start(&hadc1);
     HAL_TIM_Base_Start_IT(&htim3);
 }
 
-
+/**
+ * @brief 定时器中断回调函数
+ * 先使用adc1读取vref用于校准adc
+ * 再使用adc2读取并计算电池电压
+ * 若电压异常，启动蜂鸣器报警
+ */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
     if (htim == &htim3) {
 
@@ -35,7 +44,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
         ADC_value_battery = HAL_ADC_GetValue(&hadc2);
         Battery_voltage = ADC_value_battery * 2 * Vref / 4095.0f;
         HAL_ADC_Stop(&hadc2);
-
 
         // battery voltage compare
         // there is no battery when vbat <= 1v

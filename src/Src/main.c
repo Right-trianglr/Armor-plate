@@ -1,6 +1,5 @@
 /* USER CODE BEGIN Header */
 #include "battery.h"
-#include "beeper.h"
 #include "RGB.h"
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
@@ -91,7 +90,8 @@ int main(void)
   MX_TIM3_Init();
   MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
-  
+
+  startBatteryMonitor(); //启用电池电压监测
   RGB_RED2(8);
   /* USER CODE END 2 */
 
