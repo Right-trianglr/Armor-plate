@@ -1,14 +1,15 @@
 #include "RGB.h"
 #include "main.h"
+#include "beeper.h"
 
 
 /*Some Static Colors------------------------------*/
-const RGB_Color_TypeDef RED = {220, 0, 0}; // 显示红色RGB数据
+const RGB_Color_TypeDef RED = {255, 0, 0}; // 显示红色RGB数据
 const RGB_Color_TypeDef BLUE = {0, 0, 255};
 const RGB_Color_TypeDef BLACK = {0, 0, 0};
+const RGB_Color_TypeDef WHITE = {255, 255, 255};
 
 // 测试数据
-RGB_Color_TypeDef COLOR1 = {200, 0, 0};
 
 /*二维数组存放最终PWM输出数组，每一行24个
 数据代表一个LED，最后一行24个0代表RESET码*/
@@ -55,7 +56,7 @@ void Reset_Load(void)
 } // 注释掉后点灯代码便可以在while循环中使用了
 
 
-TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim2;
 /**
  * @brief 通过TIM2通道1发送WS2812灯珠数据
  *
@@ -95,7 +96,8 @@ void RGB_RED2(uint16_t Pixel_Len)
 
 	Reset_Load();
 	//DWT_Delay(5);
-	RGB_SendArray_PA0();
+	RGB_SendArray();
+
 }
 
 
@@ -130,4 +132,8 @@ void RGB_all_black(void)
 	}
 	Reset_Load();
 	RGB_SendArray_PA0();
+}
+
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim) {
+
 }

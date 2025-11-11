@@ -3,6 +3,8 @@
     <words>
       <w>exti</w>
       <w>hadc</w>
+      <w>hdma</w>
+      <w>systick</w>
       <w>vref</w>
     </words>
   </dictionary>
