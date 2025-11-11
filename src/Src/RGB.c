@@ -1,6 +1,12 @@
 #include "RGB.h"
 #include "main.h"
 
+/*一些常见颜色*/
+extern const RGB_Color_TypeDef RED = {255, 0, 0};
+extern const RGB_Color_TypeDef BLUE = {0, 0, 255};
+extern const RGB_Color_TypeDef GREEN = {0, 255, 0};
+extern const RGB_Color_TypeDef BLACK = {0, 0, 0};
+extern const RGB_Color_TypeDef WHITE = {255, 255, 255};
 
 /*二维数组存放最终PWM输出数组，每一行24个
 数据代表一个LED，最后一行24个0代表RESET码*/
@@ -66,7 +72,7 @@ void RGB_SetColors(uint16_t Pixel_Len, RGB_Color_TypeDef Color)
 
 	for (i = 0; i < Pixel_Len; i++) // 给对应个数LED写入红色
 	{
-		RGB_SetColor(i, Color);
+		RGB_SetSingleColor(i, Color);
 	}
 
 	Reset_Load();

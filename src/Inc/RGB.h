@@ -14,16 +14,16 @@ typedef struct
 } RGB_Color_TypeDef;
 
 /*一些常见颜色*/
-const RGB_Color_TypeDef RED = {255, 0, 0};
-const RGB_Color_TypeDef BLUE = {0, 0, 255};
-const RGB_Color_TypeDef GREEN = {0, 255, 0};
-const RGB_Color_TypeDef BLACK = {0, 0, 0};
-const RGB_Color_TypeDef WHITE = {255, 255, 255};
+extern const RGB_Color_TypeDef RED;
+extern const RGB_Color_TypeDef BLUE;
+extern const RGB_Color_TypeDef GREEN;
+extern const RGB_Color_TypeDef BLACK;
+extern const RGB_Color_TypeDef WHITE;
 
 
 #define Pixel_NUM 8
 
-void RGB_SetColor(uint16_t LedId, RGB_Color_TypeDef Color);
+void RGB_SetSingleColor(uint16_t LedId, RGB_Color_TypeDef Color);
 
 void Reset_Load(void);
 

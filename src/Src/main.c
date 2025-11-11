@@ -98,12 +98,12 @@ int main(void)
   while (1)
   {
     if (ledcolor == red) {
-      RGB_SetColor(8,RED);
+      RGB_SetColors(8,RED);
       RGB_SendArray(&htim2, TIM_CHANNEL_1);
       RGB_SendArray(&htim2, TIM_CHANNEL_2);
     }
     if (ledcolor == blue) {
-      RGB_SetColor(8,BLUE);
+      RGB_SetColors(8,BLUE);
       RGB_SendArray(&htim2, TIM_CHANNEL_1);
       RGB_SendArray(&htim2, TIM_CHANNEL_2);
     }
