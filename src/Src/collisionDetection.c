@@ -7,6 +7,7 @@
 
 extern TIM_HandleTypeDef htim1;
 static int numDetected = 0;
+static int numTotal = 0;
 
 void startCollisionDetection(void) {
     HAL_TIM_Base_Start_IT(&htim1);
@@ -14,10 +15,15 @@ void startCollisionDetection(void) {
 
 void handleDetection(void) {
     GPIO_PinState state = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1);
+    numTotal++;
     if (state == GPIO_PIN_SET) {
         numDetected++;
     }
-    if (numDetected>=10) {
+    if (numTotal>=20) {
+        if (numDetected >=10) {
+
+        }
+        numTotal = 0;
         numDetected = 0;
     }
 }
