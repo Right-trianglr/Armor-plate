@@ -1,9 +1,7 @@
 # Armor-plate
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
 这里是东北大学秦皇岛分校征龙凌沧战队自制装甲板项目
-
-
-
-Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
 该项目在CC BY-NC-SA 4.0协议下开源 
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
