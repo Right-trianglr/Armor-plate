@@ -23,12 +23,12 @@ extern const RGB_Color_TypeDef WHITE;
 
 #define Pixel_NUM 8
 
-void RGB_SetSingleColor(uint16_t LedId, RGB_Color_TypeDef Color);
+void RGB_SetSingleColor(uint32_t Pixel_Buf[][24], uint16_t LedId, RGB_Color_TypeDef Color);
 
-void Reset_Load(void);
+void Reset_Load(uint32_t Pixel_Buf[][24]);
 
-void RGB_SetColors(uint16_t Pixel_Len, RGB_Color_TypeDef Color);
+void RGB_SendArray(uint32_t Pixel_Buf[][24], TIM_HandleTypeDef *htimx, const uint32_t channel);
 
-void RGB_SendArray(TIM_HandleTypeDef *htimx, const uint32_t channel);
+void RGB_SetColors(uint32_t (*Pixel_Buf)[24], uint16_t Pixel_Len, RGB_Color_TypeDef Color);
 
 #endif

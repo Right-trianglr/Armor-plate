@@ -1,6 +1,3 @@
-//
-// Created by Right on 2025/11/11.
-//
 
 #include "collisionDetection.h"
 #include "main.h"

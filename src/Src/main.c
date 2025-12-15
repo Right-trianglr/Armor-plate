@@ -2,9 +2,11 @@
 #include "colorSwitch.h"
 #include "battery.h"
 #include "collisionDetection.h"
+#include "beeper.h"
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -36,7 +38,7 @@ DMA_HandleTypeDef hdma_tim2_ch1;
 DMA_HandleTypeDef hdma_tim2_ch2_ch4;
 
 /* USER CODE BEGIN PV */
-extern enum Color_enum ledcolor;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -106,8 +108,9 @@ int main(void)
   MX_ADC2_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  startCollisionDetection(); //启用碰撞监测
-  startBatteryMonitor(); //启用电池电压监测
+  //startCollisionDetection(); //启用碰撞监测
+  //startBatteryMonitor(); //启用电池电压监测
+  colorSwitchInit();
   /* USER CODE END 2 */
 
   /* Infinite loop */
