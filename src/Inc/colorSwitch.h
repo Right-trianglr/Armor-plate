@@ -15,3 +15,4 @@ enum Color_enum{
 
 void handleColorSwitch();
 void colorSwitchInit();
+void flashColor();

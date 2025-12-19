@@ -16,10 +16,8 @@ void colorSwitchInit() {
 }
 
 void handleColorSwitch() {
-    beeperOn();
     HAL_Delay(10);
     GPIO_PinState state = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
-    beeperOff();
     switch (state) {
         case GPIO_PIN_RESET:
             ledcolor = blue;
@@ -28,18 +26,24 @@ void handleColorSwitch() {
             ledcolor = red;
             break;
     }
+    flashColor();
+}
+
+void flashColor() {
+    beeperOn();
     if (ledcolor == red) {
         RGB_SendArray(black_array, &htim2, TIM_CHANNEL_1);
         RGB_SendArray(black_array, &htim2, TIM_CHANNEL_2);
-        HAL_Delay(10);
+        HAL_Delay(20);
         RGB_SendArray(red_array, &htim2, TIM_CHANNEL_1);
         RGB_SendArray(red_array, &htim2, TIM_CHANNEL_2);
     }
     if (ledcolor == blue) {
         RGB_SendArray(black_array, &htim2, TIM_CHANNEL_1);
         RGB_SendArray(black_array, &htim2, TIM_CHANNEL_2);
-        HAL_Delay(10);
+        HAL_Delay(20);
         RGB_SendArray(blue_array, &htim2, TIM_CHANNEL_1);
         RGB_SendArray(blue_array, &htim2, TIM_CHANNEL_2);
     }
+    beeperOff();
 }

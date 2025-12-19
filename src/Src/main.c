@@ -108,7 +108,7 @@ int main(void)
   MX_ADC2_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  //startCollisionDetection(); //启用碰撞监测
+  startCollisionDetection(); //启用碰撞监测
   //startBatteryMonitor(); //启用电池电压监测
   colorSwitchInit();
   /* USER CODE END 2 */
