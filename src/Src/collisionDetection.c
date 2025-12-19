@@ -1,6 +1,5 @@
 #include "collisionDetection.h"
 #include "colorSwitch.h"
-#include "beeper.h"
 #include "main.h"
 
 extern TIM_HandleTypeDef htim1;

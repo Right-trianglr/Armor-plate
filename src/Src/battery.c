@@ -1,6 +1,3 @@
-//
-// Created by Right on 2025/10/30.
-//
 #include "beeper.h"
 #include "main.h"
 
