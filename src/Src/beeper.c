@@ -1,5 +1,4 @@
 #include "beeper.h"
-#include "main.h"
 
 /**
  * @brief 通过GPIO驱动有源蜂鸣器

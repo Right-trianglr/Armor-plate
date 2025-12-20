@@ -3,6 +3,8 @@
  * also use macro as alternative
  */
 
+#include "main.h"
+
 #define GPIOx GPIOB
 #define GPIO_PIN GPIO_PIN_2
 
